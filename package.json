@@ -1,0 +1,23 @@
+{
+  "name": "bot-template-telegraf",
+  "version": "1.0.0",
+  "description": "Starter template for Telegraf.js",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "template"
+  ],
+  "author": "Samandar Turdiev",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "telegraf": "^4.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
