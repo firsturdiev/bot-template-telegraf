@@ -5,9 +5,10 @@ const { Scenes, session } = require('telegraf');
 const { setBotCommands, logStartup } = require('./utils/misc.js');
 const registerHandlers = require('./handlers/handlers.js');
 const { createTables } = require('./utils/db.js');
+const languageScene = require('./scenes/language.js');
 
 // Scenes
-const stage = new Scenes.Stage([]);
+const stage = new Scenes.Stage([languageScene]);
 
 // Middlewares
 bot.use(session()); 
