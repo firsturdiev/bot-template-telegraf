@@ -1,4 +1,4 @@
-import { bot } from '../loader.js';
+const { bot } = require('../loader.js')
 
 function registerHandlers() {
 
@@ -7,4 +7,4 @@ function registerHandlers() {
 
 }
 
-export default registerHandlers
+module.exports = registerHandlers

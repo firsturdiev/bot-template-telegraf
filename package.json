@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Starter template for Telegraf.js",
   "main": "app.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js"

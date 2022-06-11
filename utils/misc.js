@@ -1,8 +1,9 @@
-import { bot } from '../loader.js';
+const { bot } = require('../loader.js');
 
 async function setBotCommands() {
   await bot.telegram.setMyCommands([
-    { command: 'start', description: 'Botni qayta ishga tushirish' }
+    { command: 'start', description: 'Botni qayta ishga tushirish' },
+    { command: 'lang', description: 'Tilni o\'zgartirish'}
   ])
 }
 
@@ -12,7 +13,7 @@ function logStartup() {
   });
 }
 
-export {
+module.exports = {
   setBotCommands,
   logStartup
 }

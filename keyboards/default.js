@@ -1,2 +1,1 @@
-import { Markup } from 'telegraf';
-
+const { Markup } = require('telegraf');
