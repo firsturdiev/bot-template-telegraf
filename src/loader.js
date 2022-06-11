@@ -1,10 +1,8 @@
-import { Telegraf } from 'telegraf';
-import config from './data/config.js';
-import registerHandlers from './handlers/handlers.js';
+const { Telegraf } = require('telegraf');
+const config = require('./data/config.js');
 
 const bot = new Telegraf(config.BOT_TOKEN);
-registerHandlers();
 
-export {
+module.exports = {
   bot
 }

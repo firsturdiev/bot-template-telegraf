@@ -1,4 +1,4 @@
-const config = require("../data/config.js");
+const config = require("./data/config.js");
 
 module.exports = {
   dev: {

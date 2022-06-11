@@ -13,6 +13,7 @@ const stage = new Scenes.Stage([]);
 bot.use(session()); 
 bot.use(i18n.middleware());
 bot.use(stage.middleware());
+registerHandlers();
 
 async function init() {
   await createTables();
