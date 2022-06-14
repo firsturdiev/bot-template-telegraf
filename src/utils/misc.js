@@ -2,8 +2,8 @@ const { bot } = require('../loader.js');
 
 async function setBotCommands() {
   await bot.telegram.setMyCommands([
-    { command: 'start', description: 'Botni qayta ishga tushirish' },
-    { command: 'lang', description: 'Tilni o\'zgartirish'}
+    { command: 'start', description: '🔄 Botni qayta ishga tushirish | 🔄 Перезапустите бота' },
+    { command: 'lang', description: '🇺🇿 Tilni o\'zgartirish | 🇷🇺 Изменить язык'}
   ])
 }
 
