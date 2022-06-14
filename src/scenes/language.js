@@ -1,25 +1,32 @@
 const { Scenes } = require('telegraf');
-const { languageMenu } = require('../keyboards/inline.js')
-const db = require('../utils/db.js')
+const { languageMenu } = require('../keyboards/inline.js');
+const { homeMenu } = require('../keyboards/default.js');
+const db = require('../utils/db.js');
 
-const languageScene = new Scenes.WizardScene(
-  'LANGUAGE',
+const registrationScene = new Scenes.WizardScene(
+  'REGISTRATION',
   async (ctx) => {
-    await ctx.reply('Iltimos, tilni tanlang | Пожалуйста, выберите язык', languageMenu);
+    await ctx.reply(ctx.i18n.t('language.title'), languageMenu);
     return ctx.wizard.next();
   },
   async (ctx) => {
-    if (ctx.updateType !== 'callback_query')
-      return ctx.scene.back();
+    try {
+      const lang = ctx.callbackQuery.data.split(':')[1];
+      // Session and db doings
+      const user = { telegram_id: ctx.from.id, full_name: `${ctx.from.first_name} ${ctx.from.last_name}`, lang }
+      ctx.session.user = user
+      ctx.i18n.locale(user.lang);
+      await db.addUser(user);
 
-    const langCode = ctx.callbackQuery.data.split(':')[1];  
-    ctx.session.lang = langCode;
-    ctx.i18n.locale(langCode);
-    await ctx.answerCbQuery(ctx.i18n.t('languageChosen'));
-    await ctx.deleteMessage(ctx.callbackQuery.message.message_id);
-    await ctx.reply(ctx.i18n.t('welcome'));
-    return ctx.scene.leave();
+      await ctx.answerCbQuery(ctx.i18n.t('languageChosen'));
+      await ctx.deleteMessage();
+      await ctx.reply(ctx.i18n.t('welcome'), homeMenu(ctx.i18n));
+      return ctx.scene.leave();
+    }
+    catch (err) {
+      await ctx.reply(ctx.i18n.t('language.title'), languageMenu);
+    }
   }
 );
 
-module.exports = languageScene
+module.exports = registrationScene

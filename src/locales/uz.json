@@ -1,3 +1,8 @@
 {
-    "welcome": "Botga xush kelibsiz"
+    "welcome": "Botga xush kelibsiz",
+    "language": {
+        "title": "🇺🇿 Iltimos, tilni tanlang\n🇷🇺 Пожалуйста, выберите язык",
+        "success": "✅ Til tanlandi"
+    },
+    "test": "Test uz"
 }
