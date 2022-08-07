@@ -6,14 +6,13 @@ const config = {
     dropPendingUpdates: true
   },
   KNEX_CONFIG: {
-    client: "postgresql",
+    client: "mysql2",
     connection: {
       host: process.env.DATABASE_HOST,
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      port: process.env.DATABASE_PORT,
-      charset: 'utf8mb4'
+      port: process.env.DATABASE_PORT
     }
   },
   DATABASE_HOST: process.env.DATABASE_HOST,
@@ -22,6 +21,7 @@ const config = {
   DATABASE_NAME: process.env.DATABASE_NAME,
   DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
   ADMINS: process.env.ADMINS.split(',').map(item => Number(item)),
+  CHANNEL: Number(process.env.CHANNEL)
 };
 
 module.exports = config;

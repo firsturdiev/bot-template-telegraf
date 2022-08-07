@@ -12,13 +12,12 @@ const registrationScene = new Scenes.WizardScene(
   async (ctx) => {
     try {
       const lang = ctx.callbackQuery.data.split(':')[1];
-      // Session and db doings
       const user = { telegram_id: ctx.from.id, full_name: `${ctx.from.first_name} ${ctx.from.last_name}`, lang }
       ctx.session.user = user
       ctx.i18n.locale(user.lang);
       await db.addUser(user);
 
-      await ctx.answerCbQuery(ctx.i18n.t('languageChosen'));
+      await ctx.answerCbQuery(ctx.i18n.t('language.success'));
       await ctx.deleteMessage();
       await ctx.reply(ctx.i18n.t('welcome'), homeMenu(ctx.i18n));
       return ctx.scene.leave();

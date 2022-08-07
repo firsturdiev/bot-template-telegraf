@@ -27,7 +27,7 @@ function registerHandlers() {
     ctx.session.user.lang = lang;
     ctx.i18n.locale(lang);
     await db.updateUser(ctx.from.id, { lang });
-    await ctx.answerCbQuery(ctx.i18n.t('languageChosen'));
+    await ctx.answerCbQuery(ctx.i18n.t('language.success'));
     await ctx.deleteMessage();
     return ctx.reply(ctx.i18n.t('welcome'), homeMenu(ctx.i18n));
   })
