@@ -16,7 +16,7 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "knex": "^2.1.0",
-    "mysql2": "^8.7.3",
+    "mysql2": "^2.3.3",
     "telegraf": "^4.8.5",
     "telegraf-i18n": "^6.6.0"
   },
