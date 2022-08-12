@@ -1,12 +1,12 @@
 const { Scenes } = require('telegraf');
-const { languageMenu } = require('../keyboards/inline.js');
-const { homeMenu } = require('../keyboards/default.js');
+const inlineKeyboards = require('../keyboards/inline.js');
+const defaultKeyboards = require('../keyboards/default.js');
 const db = require('../utils/db.js');
 
 const registrationScene = new Scenes.WizardScene(
   'REGISTRATION',
   async (ctx) => {
-    await ctx.reply(ctx.i18n.t('language.title'), languageMenu);
+    await ctx.reply(ctx.i18n.t('language.title'), inlineKeyboards.languageMenu);
     return ctx.wizard.next();
   },
   async (ctx) => {
@@ -19,11 +19,11 @@ const registrationScene = new Scenes.WizardScene(
 
       await ctx.answerCbQuery(ctx.i18n.t('language.success'));
       await ctx.deleteMessage();
-      await ctx.reply(ctx.i18n.t('welcome'), homeMenu(ctx.i18n));
+      await ctx.reply(ctx.i18n.t('welcome'), defaultKeyboards.homeMenu(ctx.i18n));
       return ctx.scene.leave();
     }
     catch (err) {
-      await ctx.reply(ctx.i18n.t('language.title'), languageMenu);
+      await ctx.reply(ctx.i18n.t('language.title'), inlineKeyboards.languageMenu);
     }
   }
 );
