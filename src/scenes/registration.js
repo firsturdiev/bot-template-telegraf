@@ -12,8 +12,7 @@ const registrationScene = new Scenes.WizardScene(
   async (ctx) => {
     try {
       const lang = ctx.callbackQuery.data.split(':')[1];
-      const user = { telegram_id: ctx.from.id, full_name: `${ctx.from.first_name} ${ctx.from.last_name}`, lang }
-      ctx.session.user = user
+      const user = { telegram_id: ctx.from.id, full_name: `${ctx.from.first_name} ${ctx.from.last_name || ''}`, lang }
       ctx.i18n.locale(user.lang);
       await db.addUser(user);
 
@@ -28,4 +27,4 @@ const registrationScene = new Scenes.WizardScene(
   }
 );
 
-module.exports = registrationScene
+module.exports = registrationScene;
